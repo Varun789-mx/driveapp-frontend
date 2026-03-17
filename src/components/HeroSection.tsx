@@ -1,5 +1,6 @@
 import { LoaderCircle, Upload } from "lucide-react";
 import React, { useRef, useState } from "react";
+import { UrlInputBox } from "./UrlinputBox";
 
 export const HeroSection = () => {
   const [fileName, setfileName] = useState("No file choosen");
@@ -47,7 +48,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <div className="px-45 w-full">
+    <div className="px-60 w-full">
       <div className="w-full  flex flex-col h-50  justify-center   gap-4">
         <p className="text-white text-4xl font-bold">Share your files via R2</p>
         <p className="text-gray-600 text-2xl">
@@ -70,7 +71,7 @@ export const HeroSection = () => {
           />
           <p className="text-sm text-gray-400">{fileName}</p>
           <button
-            className="py-2 px-5 hover:bg-green-600 border rounded-lg"
+            className="py-2 px-5 hover:bg-[#e57519] border rounded-lg"
             onClick={HandleButtonClick}
           >
             {file ? "Upload file" : "Choose file"}
@@ -78,10 +79,13 @@ export const HeroSection = () => {
         </div>
       ) : (
         <div className="w-full h-77 bg-[#161616] rounded-xl border border-green-500/30 shadow-[inset_0_0_30px_rgba(34,197,94,0.15)] flex flex-col items-center justify-center gap-5">
-          <LoaderCircle  className="h-15 animate-spin"/>
+          <LoaderCircle className="h-15 animate-spin" />
           <p className="text-lg text-gray-400">Uploading...</p>
         </div>
       )}
+      <div className="px-4 py-5">
+        <UrlInputBox />
+      </div>
     </div>
   );
 };
