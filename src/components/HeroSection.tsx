@@ -25,14 +25,14 @@ export const HeroSection = () => {
         method: "POST",
         credentials: "include",
         body: formData,
-      });
+      })
       if (!response.ok) {
-        throw new Error(`HTTP ERROR ${response}`);
+        console.log("Error in fetching data")
+        return;
       }
-      console.log("File upload successful");
       const data = await response.json();
+      console.log("Data", data);
       setloading(false);
-      console.log(data);
     } catch (error) {
       console.log(`Error`, error);
       setloading(false);

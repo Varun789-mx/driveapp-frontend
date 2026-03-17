@@ -4,6 +4,11 @@ export const UrlInputBox = () => {
   const [url, seturl] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const localUrl = e.target.value;
+    if (localUrl.) {
+      alert("No a valid url");
+      return;
+    }
     seturl(e.target.value);
   };
   const HandleDownload = async () => {
@@ -12,25 +17,20 @@ export const UrlInputBox = () => {
       const response = await fetch(`${url}`, {
         method: "GET",
         credentials: "include",
-      });
+      })
       if (!response.ok) {
-        throw new Error(`HTTP ERROR ${response}`);
+        throw new Error("assest not found");
       }
-      console.log("File download successful");
       const blob = await response.blob();
-      const disposition = response.headers.get("Content-Disposition");
-      const match = disposition?.match(/filename="(.+)"/);
-      const filename = match?.[1] ?? "download";
-
-      // create a temporary anchor and click it
-      const blobUrl = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = blobUrl;
-      a.download = filename;
+      const Url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = Url;
+      a.download = `NEW_DOC_${(new Date).getUTCMilliseconds()}`
+      document.body.appendChild(a);
       a.click();
-
-      // clean up
-      URL.revokeObjectURL(blobUrl);
+      window.URL.revokeObjectURL(Url);
+      a.remove();
     } catch (error) {
       console.log(`Error`, error);
     }
