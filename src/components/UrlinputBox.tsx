@@ -5,7 +5,7 @@ export const UrlInputBox = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const localUrl = e.target.value;
-    if (localUrl.) {
+    if (!localUrl.startsWith('http')) {
       alert("No a valid url");
       return;
     }
@@ -48,7 +48,7 @@ export const UrlInputBox = () => {
       <div>
         <button
           onClick={HandleDownload}
-          className="py-4 px-7 text-lg font-bold hover:bg-green-600 border rounded-lg"
+          className="py-4 px-7 text-lg font-bold hover:bg-green-600 focus-within:bg-green-600 border rounded-lg"
         >
           fetch & Upload
         </button>

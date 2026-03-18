@@ -1,6 +1,7 @@
 import { LoaderCircle, Upload } from "lucide-react";
 import React, { useRef, useState } from "react";
 import { UrlInputBox } from "./UrlinputBox";
+import { TableView } from "./Table";
 
 export const HeroSection = () => {
   const [fileName, setfileName] = useState("No file choosen");
@@ -83,8 +84,15 @@ export const HeroSection = () => {
           <p className="text-lg text-gray-400">Uploading...</p>
         </div>
       )}
+      <div className="flex items-center my-4  gap-4">
+      <div className="grow border-t border-blue-600"></div>
+        <p className="text-sm text-gray-400">or paste a URL to fetch</p>
+         <div className="grow border-t border-blue-600"></div>
+         </div>
       <div className="px-4 py-5">
+        
         <UrlInputBox />
+       <TableView/>
       </div>
     </div>
   );
