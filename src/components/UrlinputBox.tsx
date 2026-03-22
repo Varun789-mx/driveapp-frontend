@@ -1,15 +1,20 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export const UrlInputBox = () => {
   const [url, seturl] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const localUrl = e.target.value;
-    if (!localUrl.startsWith('http')) {
-      alert("No a valid url");
-      return;
+    try {
+      const parsed = new URL(localUrl);
+      if (parsed.protocol !== 'http:' && parsed.protocol != 'https:') {
+        throw new Error("Invalid protocol");
+      }
+      seturl(e.target.value);
+    } catch (error) {
+      toast.error("Invalid url")
     }
-    seturl(e.target.value);
   };
   const HandleDownload = async () => {
     if (!url) return;
@@ -19,7 +24,7 @@ export const UrlInputBox = () => {
         credentials: "include",
       })
       if (!response.ok) {
-        throw new Error("assest not found");
+        toast.error('Not-found')
       }
       const blob = await response.blob();
       const Url = window.URL.createObjectURL(blob);

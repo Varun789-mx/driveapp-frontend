@@ -4,9 +4,9 @@ import axios from "axios";
 
 export interface Urls {
     id: number;
-    original_url: string;
+    key: string;
     short_url: string;
-    clicks: number;
+    downloads: number;
     timeStamp: Date;
 }
 
@@ -26,7 +26,7 @@ export const TableView = () => {
                 alert("Error while fetching your links");
             }
             seturlarray(Links.data.data);
-
+            console.log(Links);
             localStorage.setItem("Urls", JSON.stringify(Links.data.data));
         } catch (error) {
             console.log("Error in getting links", error);
@@ -43,7 +43,7 @@ export const TableView = () => {
     }, []);
 
     const handleCopy = (id: number, url: string) => {
-        navigator.clipboard.writeText(`${import.meta.env.VITE_BACKEND_URL}/${url}`);
+        navigator.clipboard.writeText(`${import.meta.env.VITE_BACKEND_URL}/api/download/?short_id=${url}`);
         setCopiedId(id);
         setTimeout(() => setCopiedId(null), 2000);
     };
@@ -56,7 +56,7 @@ export const TableView = () => {
                             <tr className="border-b border-white/10 text-gray-400 text-xs uppercase tracking-widest">
                                 <th className="px-6 py-4 font-medium">Date</th>
                                 <th className="px-6 py-4 font-medium">Shorten URL</th>
-                                <th className="px-6 py-4 font-medium">Original URL</th>
+                                <th className="px-6 py-4 font-medium">Name</th>
                                 <th className="px6 py-4 font-medium text-center">Downloads</th>
                             </tr>
                         </thead>
@@ -77,7 +77,7 @@ export const TableView = () => {
                                                 target="_blank"
                                                 rel="noreferrer"
                                             >
-                                                {import.meta.env.VITE_BACKEND_URL}/{row.short_url}
+                                                {import.meta.env.VITE_BACKEND_URL}/api/download/?short_id={row.short_url}
                                             </a>
                                             <button
                                                 onClick={() => handleCopy(row.id, row.short_url)}
@@ -100,18 +100,17 @@ export const TableView = () => {
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <a
-                                            href={row.original_url}
+                                        <p
+
                                             className="text-gray-200 hover:text-white transition-colors duration-150 truncate max-w-65 block"
-                                            target="_blank"
                                             rel="noreferrer"
                                         >
-                                            {row.original_url}
-                                        </a>
+                                            {row.key.split("_")[0]}
+                                        </p>
                                     </td>
                                     <td className="px-6 py-4 text-center">
                                         <span className="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-600/20 text-purple-300 border border-purple-500/30">
-                                            {row.clicks}
+                                            {row.downloads}
                                         </span>
                                     </td>
                                 </tr>

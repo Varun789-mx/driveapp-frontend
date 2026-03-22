@@ -2,6 +2,7 @@ import { LoaderCircle, Upload } from "lucide-react";
 import React, { useRef, useState } from "react";
 import { UrlInputBox } from "./UrlinputBox";
 import { TableView } from "./Table";
+import toast from "react-hot-toast";
 
 export const HeroSection = () => {
   const [fileName, setfileName] = useState("No file choosen");
@@ -22,7 +23,7 @@ export const HeroSection = () => {
     formData.append("file", file);
     setloading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/upload`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/upload`, {
         method: "POST",
         credentials: "include",
         body: formData,
@@ -33,10 +34,15 @@ export const HeroSection = () => {
       }
       const data = await response.json();
       console.log("Data", data);
+      setfile(null);
+      toast.success("File upload successfull")
+      setfileName("No file choosen")
       setloading(false);
     } catch (error) {
       console.log(`Error`, error);
       setloading(false);
+      toast.error("File upload failed")
+      setfileName("No file choosen")
     }
   };
 
@@ -85,14 +91,14 @@ export const HeroSection = () => {
         </div>
       )}
       <div className="flex items-center my-4  gap-4">
-      <div className="grow border-t border-blue-600"></div>
+        <div className="grow border-t border-blue-600"></div>
         <p className="text-sm text-gray-400">or paste a URL to fetch</p>
-         <div className="grow border-t border-blue-600"></div>
-         </div>
+        <div className="grow border-t border-blue-600"></div>
+      </div>
       <div className="px-4 py-5">
-        
+
         <UrlInputBox />
-       <TableView/>
+        <TableView />
       </div>
     </div>
   );
