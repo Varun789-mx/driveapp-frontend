@@ -41,10 +41,10 @@ export const UrlInputBox = () => {
     }
   };
   return (
-    <div className="w-full flex justify-center gap-4">
-      <div className="w-2/3 bg-[#111] text-lg border border-green-700 rounded-lg p-4 flex items-center gap-3 focus:outline-1 focus:outline-blue-500 focus-within:outline-1 focus-within:outline-blue-500">
+    <div className=" md:w-2/3 w-full flex justify-center   gap-2">
+      <div className="w-full flex flex-col md:flex-row justify-center gap-3 bg-[#111] text-lg border border-green-700 rounded-lg p-2 focus:outline-1 focus:outline-blue-500 focus-within:outline-1 focus-within:outline-blue-500">
         <input
-          className="w-full border-none focus:outline-none"
+          className="text-white w-full placeholder:placeholder-gray-500 rounded-3xl  placeholder:text-xl outline-none"
           type="url"
           onChange={handleChange}
           placeholder="https://example.com/file-to-upload"
@@ -52,8 +52,8 @@ export const UrlInputBox = () => {
       </div>
       <div>
         <button
-          onClick={HandleDownload}
-          className="py-4 px-7 text-lg font-bold hover:bg-green-600 focus-within:bg-green-600 border rounded-lg"
+          onClick={HandleDownload}   
+          className="text-lg w-full font-bold p-2 hover:bg-green-600 text-white border-green-300  focus-within:bg-green-600 border rounded-lg"
         >
           fetch & Upload
         </button>

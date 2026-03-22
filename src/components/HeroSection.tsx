@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { UrlInputBox } from "./UrlinputBox";
 import { TableView } from "./Table";
 import toast from "react-hot-toast";
+import { Navbar } from "./Navbar";
 
 export const HeroSection = () => {
   const [fileName, setfileName] = useState("No file choosen");
@@ -55,34 +56,37 @@ export const HeroSection = () => {
   };
 
   return (
-    <div className="px-60 w-full">
-      <div className="w-full  flex flex-col h-50  justify-center   gap-4">
-        <p className="text-white text-4xl font-bold">Share your files via R2</p>
-        <p className="text-gray-600 text-2xl">
-          Upload a file — get a link. Stored on Cloudflare R2.
-        </p>
-      </div>
+    <div className=" w-full ">
+      <Navbar />
+     <div className="w-full md:px-60 px-6 flex flex-col justify-center gap-4 text-center md:text-left mt-10 mb-6">
+  <p className="text-white text-4xl font-bold">Share your files via R2</p>
+  <p className="text-gray-400 md:text-xl text-lg">
+    Upload a file — get a link. Stored on Cloudflare R2.
+  </p>
+</div>
       {!loading ? (
-        <div className="w-full h-77 bg-[#161616] rounded-xl border border-green-500/30 shadow-[inset_0_0_30px_rgba(34,197,94,0.15)] flex flex-col items-center justify-center gap-5">
-          <Upload className="bg-[#161616] text-green-400 w-8 h-8" />
-          <p className="text-lg font-bold text-white">Drop a file here</p>
-          <p className="text-md  text-gray-400">
-            or click to pick from your computer
-          </p>
-          <input
-            type="file"
-            ref={fileInputRef}
-            id="fileInput"
-            className="hidden"
-            onChange={handleChange}
-          />
-          <p className="text-sm text-gray-400">{fileName}</p>
-          <button
-            className="py-2 px-5 hover:bg-[#e57519] border rounded-lg"
-            onClick={HandleButtonClick}
-          >
-            {file ? "Upload file" : "Choose file"}
-          </button>{" "}
+        <div className="w-full  flex justify-center p-5">
+          <div className="md:w-2/3  w-full flex justify-center h-77  flex-col items-center gap-5 bg-[#161616] rounded-xl border border-green-500/30 shadow-[inset_0_0_30px_rgba(34,197,94,0.15)] ">
+            <Upload className="bg-[#161616] text-green-400 w-8 h-8" />
+            <p className="text-lg font-bold text-white">Drop a file here</p>
+            <p className="text-md  text-gray-400">
+              or click to pick from your computer
+            </p>
+            <input
+              type="file"
+              ref={fileInputRef}
+              id="fileInput"
+              className="hidden"
+              onChange={handleChange}
+            />
+            <p className="text-sm text-gray-400">{fileName}</p>
+            <button
+              className="py-2 px-5 hover:bg-[#e57519] border text-white border-green-300 rounded-lg"
+              onClick={HandleButtonClick}
+            >
+              {file ? "Upload file" : "Choose file"}
+            </button>{" "}
+          </div>
         </div>
       ) : (
         <div className="w-full h-77 bg-[#161616] rounded-xl border border-green-500/30 shadow-[inset_0_0_30px_rgba(34,197,94,0.15)] flex flex-col items-center justify-center gap-5">
@@ -90,13 +94,12 @@ export const HeroSection = () => {
           <p className="text-lg text-gray-400">Uploading...</p>
         </div>
       )}
-      <div className="flex items-center my-4  gap-4">
-        <div className="grow border-t border-blue-600"></div>
-        <p className="text-sm text-gray-400">or paste a URL to fetch</p>
-        <div className="grow border-t border-blue-600"></div>
-      </div>
-      <div className="px-4 py-5">
-
+      <div className="flex justify-center  flex-col w-full items-center bg-[#0f0f0f]">
+        <div className="flex items-center my-4 gap-4 w-2/3">
+          <div className="grow border-t border-blue-600"></div>
+          <p className="text-sm text-gray-400">or paste a URL to fetch</p>
+          <div className="grow border-t  border-blue-600"></div>
+        </div>
         <UrlInputBox />
         <TableView />
       </div>

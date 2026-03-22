@@ -49,7 +49,7 @@ export const TableView = () => {
     };
     return (
         <>
-            <div className="w-full mt-6 overflow-x-auto rounded-xl border border-white/10 backdrop-blur-sm">
+            <div className="w-2/3 mt-6 overflow-x-auto rounded-xl border border-white/10 backdrop-blur-sm">
                 {urlarray && urlarray.length > 0 ? (
                     <table className="w-full text-sm text-left">
                         <thead>
