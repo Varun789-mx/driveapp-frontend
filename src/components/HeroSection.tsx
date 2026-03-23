@@ -89,9 +89,11 @@ export const HeroSection = () => {
           </div>
         </div>
       ) : (
-        <div className="w-full h-77 bg-[#161616] rounded-xl border border-green-500/30 shadow-[inset_0_0_30px_rgba(34,197,94,0.15)] flex flex-col items-center justify-center gap-5">
-          <LoaderCircle className="h-15 animate-spin" />
-          <p className="text-lg text-gray-400">Uploading...</p>
+        <div className="w-full  flex justify-center p-5">
+          <div className="md:w-2/3  w-full flex justify-center h-77  flex-col items-center gap-5 bg-[#161616] rounded-xl border border-green-500/30 shadow-[inset_0_0_30px_rgba(34,197,94,0.15)] ">
+            <LoaderCircle className="h-15 animate-spin" />
+            <p className="text-lg text-gray-400">Uploading...</p>
+          </div>
         </div>
       )}
       <div className="flex justify-center  flex-col w-full items-center bg-[#0f0f0f]">
