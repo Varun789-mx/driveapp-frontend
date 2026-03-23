@@ -58,12 +58,12 @@ export const HeroSection = () => {
   return (
     <div className=" w-full ">
       <Navbar />
-     <div className="w-full md:px-60 px-6 flex flex-col justify-center gap-4 text-center md:text-left mt-10 mb-6">
-  <p className="text-white text-4xl font-bold">Share your files via R2</p>
-  <p className="text-gray-400 md:text-xl text-lg">
-    Upload a file — get a link. Stored on Cloudflare R2.
-  </p>
-</div>
+      <div className="w-full md:px-60 px-6 flex flex-col justify-center gap-4 text-center md:text-left mt-10 mb-6">
+        <p className="text-white text-4xl font-bold">Share your files via R2</p>
+        <p className="text-gray-400 md:text-xl text-lg">
+          Upload a file — get a link. Stored on Cloudflare R2.
+        </p>
+      </div>
       {!loading ? (
         <div className="w-full  flex justify-center p-5">
           <div className="md:w-2/3  w-full flex justify-center h-77  flex-col items-center gap-5 bg-[#161616] rounded-xl border border-green-500/30 shadow-[inset_0_0_30px_rgba(34,197,94,0.15)] ">
@@ -96,9 +96,9 @@ export const HeroSection = () => {
       )}
       <div className="flex justify-center  flex-col w-full items-center bg-[#0f0f0f]">
         <div className="flex items-center my-4 gap-4 w-2/3">
-          <div className="grow border-t border-blue-600"></div>
+          <div className="grow border-t border-green-300"></div>
           <p className="text-sm text-gray-400">or paste a URL to fetch</p>
-          <div className="grow border-t  border-blue-600"></div>
+          <div className="grow border-t  border-green-300"></div>
         </div>
         <UrlInputBox />
         <TableView />
