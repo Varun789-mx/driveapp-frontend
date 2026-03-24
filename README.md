@@ -1,73 +1,129 @@
-# React + TypeScript + Vite
+# R2-Store — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern cloud storage web application frontend built on top of **Cloudflare R2** object storage. Upload, manage, and access your files through a clean, minimal UI — deployed live at [r2-store.vercel.app](https://r2-store.vercel.app).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+| Layer | Technology |
+|---|---|
+| Framework | React 19 |
+| Language | TypeScript 5.9 |
+| Build Tool | Vite 8 |
+| Styling | Tailwind CSS v4 |
+| HTTP Client | Axios |
+| Notifications | react-hot-toast |
+| Icons | lucide-react |
+| Package Manager | Bun |
+| Deployment | Vercel |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 📁 File upload and management via Cloudflare R2
+- 🔔 Real-time toast notifications for upload/delete feedback
+- 🎨 Clean, responsive UI with Tailwind CSS v4
+- ⚡ Blazing fast dev experience with Vite HMR
+- 🔒 Environment-based API configuration
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
+```
+driveapp-frontend/
+├── public/                  # Static assets
+├── src/                     # Application source
+│   └── main.tsx             # App entry point
+├── .env                     # Environment variables (see below)
+├── index.html               # HTML shell — app title: R2-Store
+├── vite.config.ts           # Vite + React + Tailwind config
+├── tsconfig.json            # TypeScript project config
+├── package.json             # Dependencies & scripts
+└── bun.lock                 # Bun lockfile
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+
+- [Bun](https://bun.sh) installed
+- A Cloudflare R2 bucket and backend API (see [backend repo](#))
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/Varun789-mx/driveapp-frontend.git
+cd driveapp-frontend
+
+# Install dependencies
+bun install
 ```
+
+### Environment Variables
+
+Create a `.env` file in the root of the project:
+```env
+VITE_API_URL=https://your-backend-api-url.com
+```
+
+> All Vite env variables must be prefixed with `VITE_` to be exposed to the client.
+
+### Running Locally
+```bash
+bun run dev
+```
+
+The app will be available at `http://localhost:5173`.
+
+### Building for Production
+```bash
+bun run build
+```
+
+Output is generated in the `dist/` folder, ready for deployment.
+
+### Preview Production Build
+```bash
+bun run dev
+```
+
+---
+
+## Available Scripts
+
+| Command | Description |
+|---|---|
+| `bun run dev` | Start the Vite development server with HMR |
+| `bun run build` | Type-check and build for production |
+
+---
+
+## Deployment
+
+This project is deployed on **Vercel**. Any push to `main` triggers an automatic deployment.
+
+Live URL: **[r2-store.vercel.app](https://r2-store.vercel.app)**
+
+To deploy your own instance:
+
+1. Fork this repository
+2. Import it into [Vercel](https://vercel.com)
+3. Add your `VITE_API_URL` in the Vercel environment variables settings
+4. Deploy
+
+---
+
+## Related
+
+- 🔗 Backend repo — *(link your backend repo here)*
+- ☁️ [Cloudflare R2 Docs](https://developers.cloudflare.com/r2/)
+
+---
+
+## License
+
+MIT
