@@ -32,7 +32,7 @@ A modern cloud storage web application frontend built on top of **Cloudflare R2*
 
 ## Project Structure
 ```
-driveapp-frontend/
+r2-store-frontend-frontend/
 ├── public/                  # Static assets
 ├── src/                     # Application source
 │   └── main.tsx             # App entry point
@@ -56,8 +56,8 @@ driveapp-frontend/
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/Varun789-mx/driveapp-frontend.git
-cd driveapp-frontend
+git clone https://github.com/Varun789-mx/r2-store-frontend-frontend.git
+cd r2-store-frontend-frontend
 
 # Install dependencies
 bun install
